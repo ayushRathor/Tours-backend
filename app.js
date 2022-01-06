@@ -4,7 +4,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
-const http = require('http');
+const hpp = require('hpp');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -43,7 +43,7 @@ app.use(xss());
 
 //Prevent parameter polliution
 app.use(
-  http({
+  hpp({
     whitelist: [
       'duration',
       'ratingsQuantity',
